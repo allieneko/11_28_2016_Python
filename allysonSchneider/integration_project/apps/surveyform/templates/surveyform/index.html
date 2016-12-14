@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'surveyform/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="container">
+    <form action="{%url 'survey:process' %}" method="post">
+        {% csrf_token %}
+        <label>
+            <p>Your Name: <input type="text" name="Name"></input></p>
+        </label>
+        <label>
+            <p>Dojo Location:
+            <select name="Location">
+                <option value="Seattle">Seattle</option>
+                <option value="Berkeley">Berkeley</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Dallas">Dallas</option>
+                <option value="LA">Los Angeles</option>
+                <option value="OC">Orange County</option>
+                <option value="SanJose">San Jose</option>
+                <option value="DC">Washington DC</option>
+            </select></p>
+        </label>
+        <label>
+            <p>Favorite Language:
+            <select name="Language">
+                <option value="Ruby">Ruby</option>
+                <option value="Python">Python</option>
+                <option value="MEANStack">MEAN Stack</option>
+                <option value="JavaScript">JavaScript</option>
+            </select></p>
+        </label>
+        <label>
+            <p>Comment (optional):
+            <textarea name="Comment"></textarea></p>
+        </label>
+        <input type="submit" value="Submit!">
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'surveyform/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="container">
+    <h3>Thanks for submitting this form! You have submitted it {{ submission }} times now.</h3>
+
+    <h3>Submitted information</h3>
+    <p>Name: {{ name }}</p>
+    <p>Location: {{ location }}</p>
+    <p>Language: {{ language }}</p>
+    <p>Comment: {{ comment }}</p>
+
+    <button><a href="{%url 'survey:index' %}">Go Back</a></button>
+
+    </div>
+
+</body>
+</html>

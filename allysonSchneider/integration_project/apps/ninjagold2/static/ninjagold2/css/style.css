@@ -1,0 +1,63 @@
+body {
+    background-color: pink;
+    font-family: arial, sans-serif;
+    background-image: url("/static/farmbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#container {
+    width: 1000px;
+    height: 600px;
+    background-color: white;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #34925E;
+}
+
+.boxes {
+    width: 200px;
+    height: 150px;
+    border: 1px solid #34925E;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+
+}
+
+.boxes form input {
+    background-color: lightgrey;
+}
+
+button {
+    display: inline-block;
+}
+
+h5 {
+    display: inline-block;
+}
+
+a {
+    color: #34925E;
+    text-decoration: none;
+}
+
+#activities {
+    width: 930px;
+    height: 240px;
+    display: inline-block;
+    border: 1px solid #34925E;
+    padding: 10px;
+    margin: 10px 10px 10px 20px;
+    overflow: scroll;
+
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}

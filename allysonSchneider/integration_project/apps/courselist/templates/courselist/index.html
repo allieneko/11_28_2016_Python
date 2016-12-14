@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Courses</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'courselist/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div id="container">
+        <h3>Please make sure you've <a href="{%url 'register:index' %}"> registered!</a></h3>
+        <h3>Add a new course...</h3>
+        <form action="{%url 'courses:addcourse' %}" method="post">
+            {% csrf_token %}
+            <p>Course Name: <input type="text" name="title"></p>
+            <p>Course Description: <textarea name="description" cols="30" rows="3"></textarea></p>
+            <input type="submit" value="Add Course">
+        </form>
+        <h3>Add a student to a course...</h3>
+        <form action="{%url 'courses:addstudent' %}" method="post">
+            {% csrf_token %}
+
+            <select name="user">
+            User:             {% for user in all_users %}
+            <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>{% endfor %}</select>
+
+            <select name="course">
+            Course:             {% for course in courses %}
+            <option value="{{ course.id }}">{{ course.title }}</option>{% endfor %}</select>
+
+            <input type="submit" value="Add Student">
+        </form>
+        <h1>Courses</h1>
+        <table>
+            <thead>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th>Total Enrolled</th>
+            </thead>
+
+                {% for course in courses %}
+                        {{ course.students.count }}
+            <tbody>
+                <td>{{ course.title }}</td>
+                <td>{{ course.description }}</td>
+                <td>{{ course.students.count }}
+                </td>
+            </tbody>
+                {% endfor %}
+
+
+        </table>
+    </div>
+
+</body>
+</html>

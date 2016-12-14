@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninjagold2/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+    <title>Ninja Gold Redux</title>
+</head>
+<body>
+    <div id="container">
+    <h3>Your Gold: {{ request.session.gold }}</h3>
+    <div class="boxes">
+        <h2>Farm</h2>
+        <p>(earns 10-20 gold)
+    <form action="{%url 'gold:money' %}" method="post">
+            {% csrf_token %}
+        <input type="hidden" name="building" value="farm" />
+        <input type="submit" value="Find Gold!"/>
+    </form>
+</div>
+<div class="boxes">
+    <h2>Cave</h2>
+    <p>(earns 5-10 gold)
+    <form action="{%url 'gold:money' %}" method="post">
+            {% csrf_token %}
+        <input type="hidden" name="building" value="cave" />
+        <input type="submit" value="Find Gold!"/>
+    </form>
+</div>
+<div class="boxes">
+    <h2>House</h2>
+    <p>(earns 2-5 gold)
+    <form action="{%url 'gold:money' %}" method="post">
+            {% csrf_token %}
+        <input type="hidden" name="building" value="house" />
+        <input type="submit" value="Find Gold!"/>
+    </form>
+</div>
+<div class="boxes">
+    <h2>Casino</h2>
+    <p>(earns/takes 0-50 gold)
+    <form action="{%url 'gold:money' %}" method="post">
+            {% csrf_token %}
+        <input type="hidden" name="building" value="casino" />
+        <input type="submit" value="Find Gold!"/>
+    </form>
+</div>
+
+    <p>Activity:</p>
+    <div id="activities">
+    {% for item in request.session.history reversed %}
+    <p class="{{ item.class }}">{{ item.activity }}</p>
+    {% endfor %}
+    </div>
+
+    <a href="{%url 'gold:refresh' %}">Start Over</a>
+</body>
+</html>
