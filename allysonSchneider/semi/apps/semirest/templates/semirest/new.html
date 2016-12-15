@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome!</title>
+</head>
+<body>
+    {{ errors }}
+    <h1>Add a new item</h1>
+    <form action="/products/create" method="post">
+        {% csrf_token %}
+        <p>Item Name: <input type="text" name="name"></p>
+        <p>Item Description: <textarea name="description" cols="80" rows="5"></textarea></p>
+        <p>Item Price: $<input type="text" name="price" maxlength="10"></p>
+        <p><input type="submit" value="Add new item"></p>
+    </form>
+    <p><a href="/products">Back</a></p>
+</body>
+</html>
